@@ -4,8 +4,9 @@
   <welcome-file-list>
     <welcome-file>Feedback.html</welcome-file>
     <welcome-file>fbdStyle.css</welcome-file>
+    <welcome-file>success.html</welcome-file>
+    <welcome-file>unsuccess.html</welcome-file>    
   </welcome-file-list>
-  
 <servlet-mapping>
   		<servlet-name>add</servlet-name>
   		<url-pattern>/store</url-pattern>  
@@ -14,5 +15,4 @@
   		<servlet-name>add</servlet-name>
   		<servlet-class>servlet.FeedbackServlet</servlet-class>
   </servlet>
-  
 </web-app>
