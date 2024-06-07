@@ -31,35 +31,40 @@ public class FeedbackServlet extends HttpServlet {
 		
 		Connection conn= null;
 		PreparedStatement pstmt=null;
-		
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			
-			conn=DriverManager.getConnection(url, user, password);
-			
-			
-			String sql="INSERT INTO feedbackdetails(NAME,BOOK_NAME,FEEDBACK) VALUES(?,?,?)";
-			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, uname);
-			pstmt.setString(2, bname);
-			pstmt.setString(3, msg);
-			
-			
-			
-			res.setContentType("text/html");
-			int rs=pstmt.executeUpdate();
-			if(rs==1) {
-				res.sendRedirect("unsuccess.html");
-			}else {
-				res.sendRedirect("unsuccess.html");
+		if(uname!="" && bname!="" && msg!="") 
+		{
+			try {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				
+				conn=DriverManager.getConnection(url, user, password);
+				
+				
+				String sql="INSERT INTO feedbackdetails(NAME,BOOK_NAME,FEEDBACK) VALUES(?,?,?)";
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, uname);
+				pstmt.setString(2, bname);
+				pstmt.setString(3, msg);
+				
+				
+				
+				res.setContentType("text/html");
+				int rs=pstmt.executeUpdate();
+				if(rs==1) {
+					res.sendRedirect("success.html");
+				}else {
+					res.sendRedirect("unsuccess.html");
+				}
+				
+			}catch(ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+				throw new ServletException("DataBase Error: "+e.getMessage());	
 			}
-			
-		}catch(ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-			throw new ServletException("DataBase Error: "+e.getMessage());	
+		
+		}else {
+			res.setContentType("text/html");
+			res.sendRedirect("unsuccess.html");
 			
 		}
-		
 	}
 
 }

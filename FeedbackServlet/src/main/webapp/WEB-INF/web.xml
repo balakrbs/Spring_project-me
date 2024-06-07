@@ -5,7 +5,9 @@
     <welcome-file>Feedback.html</welcome-file>
     <welcome-file>fbdStyle.css</welcome-file>
     <welcome-file>success.html</welcome-file>
-    <welcome-file>unsuccess.html</welcome-file>    
+    <welcome-file>su_Style.css</welcome-file>
+    <welcome-file>unsuccess.html</welcome-file>
+    <welcome-file>unsu_Style.css</welcome-file>    
   </welcome-file-list>
 <servlet-mapping>
   		<servlet-name>add</servlet-name>
